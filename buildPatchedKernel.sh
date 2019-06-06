@@ -3,8 +3,9 @@
 # Copyright (c) 2016-19 Jetsonhacks 
 # MIT License
 
-LIBREALSENSE_DIRECTORY=${HOME}/librealsense
-LIBREALSENSE_VERSION=v2.20.0
+LIBREALSENSE_PARENT=${HOME}/Downloads
+LIBREALSENSE_DIRECTORY=${LIBREALSENSE_PARENT}/librealsense
+LIBREALSENSE_VERSION=v2.22.0
 
 
 function usage
@@ -91,7 +92,7 @@ if [ ! -d "$LIBREALSENSE_DIRECTORY" ] ; then
    case ${answer:0:1} in
      y|Y )
          # clone librealsense
-         cd ${HOME}
+         cd ${LIBREALSENSE_PARENT}
          echo "${green}Cloning librealsense${reset}"
          git clone https://github.com/IntelRealSense/librealsense.git
          cd librealsense

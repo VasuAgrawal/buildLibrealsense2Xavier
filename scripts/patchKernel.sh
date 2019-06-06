@@ -9,8 +9,10 @@ INSTALL_DIR=$PWD
 module_dir=$PWD/modules
 echo $module_dir
 
-cd ${HOME}/librealsense
-LIBREALSENSE_DIR=$PWD
+LIBREALSENSE_PARENT=${HOME}/Downloads
+LIBREALSENSE_DIR=${LIBREALSENSE_PARENT}/librealsense
+
+cd ${LIBREALSENSE_DIR}
 kernel_branch="master"
 echo "kernel branch" $kernel_branch
 kernel_name="kernel-4.9"

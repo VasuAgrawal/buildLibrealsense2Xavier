@@ -3,10 +3,10 @@
 # Copyright (c) 2016-19 Jetsonhacks 
 # MIT License
 
-LIBREALSENSE_DIRECTORY=${HOME}/librealsense
-LIBREALSENSE_VERSION=v2.17.1
-INSTALL_DIR=$PWD
-
+LIBREALSENSE_PARENT=${HOME}/Downloads
+LIBREALSENSE_DIRECTORY=${LIBREALSENSE_PARENT}/librealsense
+LIBREALSENSE_VERSION=v2.22.0
+INSTALL_DIR=`pwd`
 
 function usage
 {
@@ -41,7 +41,7 @@ echo ""
 
 if [ ! -d "$LIBREALSENSE_DIRECTORY" ] ; then
   # clone librealsense
-  cd ${HOME}
+  cd ${LIBREALSENSE_PARENT}
   echo "${green}Cloning librealsense${reset}"
   git clone https://github.com/IntelRealSense/librealsense.git
 fi
@@ -94,7 +94,7 @@ cd build
 echo "${green}Configuring Make system${reset}"
 # Use the CMake version that we built, must be > 3.8
 # Build with CUDA (default), the CUDA flag is USE_CUDA, ie -DUSE_CUDA=true
-cmake ../ -DBUILD_EXAMPLES=true -DBUILD_WITH_CUDA=true
+cmake ../ -DBUILD_EXAMPLES=true -DBUILD_WITH_CUDA=true -DBUILD_CV_EXAMPLES=true
 # The library will be installed in /usr/local/lib, header files in /usr/local/include
 # The demos, tutorials and tests will located in /usr/local/bin.
 echo "${green}Building librealsense, headers, tools and demos${reset}"
